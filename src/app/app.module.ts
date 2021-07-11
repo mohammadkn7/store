@@ -10,6 +10,7 @@ import { UserRegisterComponent } from './user-register/user-register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
+import { ProductsComponent } from './products/products.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
     HomeComponent,
     ErrorComponent,
     HeaderComponent,
-    UserRegisterComponent
+    UserRegisterComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
