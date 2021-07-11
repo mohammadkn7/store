@@ -1,50 +1,126 @@
 <div class="container">
+    <form [formGroup]="signUpForm"  class="form">  
         <!-- #docregion states -->
-        <mat-horizontal-stepper>
-            <form [formGroup]="signUpForm" (ngSubmit)="onsubmite()" class="form">
-                
+        <mat-stepper #stepper labelPosition="bottom">
+                         
                 <!-- #startStep 1 personal info -->                
-                <mat-step label="add Lines" state="personal_info">
-                    <div class="row justify-content-md-center">
+                <mat-step label="personal info" #stepper>
+                    <div class="row justify-content-md-center" formGroupName="userInfo">
                         <div class="col-xs-12 col-md-6 ">
 
                             <div>
                                 <mat-form-field class="full-width" appearance="fill">
                                     <mat-label>name</mat-label>
-                                    <input matInput type="text" placeholder="Ex. john" value="" formControlName="name">
-                                </mat-form-field>
+                                    <input matInput type="text" placeholder="Ex. john"
+                                           value="" formControlName="name" required>
+                                    <mat-error *ngIf="signUpForm.get('userInfo.name')?.status == 'INVALID' && signUpForm.get('userInfo.name')?.touched">
+                                            the name must be 10 charecter minimum                                    
+                                    </mat-error>
+                                </mat-form-field>  
                             </div>
+
                             <div>
                                 <mat-form-field class="full-width" appearance="fill">
                                     <mat-label>last name</mat-label>
-                                    <input matInput type="text" placeholder="Ex. Doe" value="" formControlName="lastName">
+                                    <input matInput type="text" placeholder="Ex. Doe" value="" 
+                                           formControlName="lastName" required>
+                                    <mat-error *ngIf="signUpForm.get('userInfo.lastName')?.status == 'INVALID' && signUpForm.get('userInfo.lastName')?.touched">
+                                            the last name must be 10 charecter minimum                                    
+                                    </mat-error>
                                 </mat-form-field>
                             </div>
 
                             <div>
                                 <mat-form-field class="full-width" appearance="fill">
                                     <mat-label>Enter your email</mat-label>
-                                    <input matInput type="email" placeholder="test@example.com" formControlName="email">
-                                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                                    <input matInput type="email" placeholder="test@example.com" 
+                                           formControlName="email" required (keydown)="onsubmit()">
+                                    <mat-error *ngIf="signUpForm.get('userInfo.email')?.status == 'INVALID' && signUpForm.get('userInfo.email')?.touched">
+                                            please enter valid format for email                                     
+                                    </mat-error>
                                 </mat-form-field>
                             </div>
 
                             <div>
                                 <mat-form-field class="full-width" appearance="fill">
                                     <mat-label>birthday</mat-label>
-                                    <input matInput type="date" placeholder=" " value="" formControlName="birthday">
+                                    <input matInput type="date" placeholder=" " value="" 
+                                           formControlName="birthday" required>
+                                     <mat-error *ngIf="signUpForm.get('userInfo.birthday')?.status == 'INVALID' && signUpForm.get('userInfo.birthday')?.touched">
+                                            the last name must be 10 charecter minimum                                    
+                                    </mat-error>
                                 </mat-form-field>
                             </div>
 
+                            <div>
+                                <button mat-raised-button  
+                                        class="float-right"
+                                        color="primary"
+                                        matStepperNext
+                                        [disabled]= "signUpForm.controls.userInfo.status == 'INVALID'">
+                                        Next
+                                </button>
+                            </div>
+                        </div>
+                    </div>
 
 
+                </mat-step>
+                <!-- #endStep 1 personal info  -->
+
+                <!-- startStep 2 address info -->
+                <mat-step label="user address" >
+                    <div class="row justify-content-md-center" formGroupName="addressInfo">
+                        <div class="col-xs-12 col-md-6">                            
+                                <div>
+                                    <mat-form-field class="full-width" appearance="fill">
+                                        <mat-label>address</mat-label>
+                                        <textarea matInput placeholder=" " value="" formControlName="address" required></textarea>
+                                        <mat-error *ngIf="signUpForm.get('addressInfo.address')?.status == 'INVALID' && signUpForm.get('addressInfo.address')?.touched">
+                                            address must be conatin 20 - 200 characters                                    
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+            
+                                <div>
+                                    <mat-form-field class="full-width" appearance="fill">
+                                        <mat-label>zip code</mat-label>
+                                        <input matInput type="text" 
+                                               placeholder=" zipe code must be 10 digit"                                         
+                                               formControlName="zipCode" required>
+                                        <mat-error *ngIf="signUpForm.get('addressInfo.zipCode')?.status == 'INVALID' && signUpForm.get('addressInfo.zipCode')?.touched">
+                                                zip code must be 10 digit                                    
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+
+                                <div>
+                                    
+                                    <button class="float-right" mat-raised-button 
+                                            color="primary" matStepperNext
+                                            [disabled]= "signUpForm.controls.addressInfo.status == 'INVALID'">
+                                            Next
+                                    </button>
+                                </div>                            
+                        </div>
+                    </div>
+                </mat-step>
+                <!-- #endStep 2 address info  -->
+
+                <!-- startStep 3 password --> 
+                <mat-step label="password" >
+                    <div class="row justify-content-md-center" >
+                        <div class="col-xs-12 col-md-6">
                             <div>
                                 <mat-form-field class="full-width" appearance="fill">
                                     <mat-label>password </mat-label>
                                     <input matInput type="password"
-                                        placeholder=" password must be minimum 10 digit and must contain at least 1 uppercase  character "
+                                        placeholder=" password "
                                         value="" formControlName="password">
                                 </mat-form-field>
+                                <mat-error *ngIf="signUpForm.get('password')?.status == 'INVALID' && signUpForm.get('password')?.touched">
+                                    password must be minimum 10 digit and must contain at least 1 uppercase  character
+                                </mat-error>
                             </div>
 
                             <div>
@@ -52,133 +128,35 @@
                                     <mat-label>re password </mat-label>
                                     <input matInput type="password" placeholder=" please enter password again" value=""
                                         formControlName="rePassword">
+                                    <mat-error *ngIf="signUpForm.get('rePassword')?.status == 'INVALID' && signUpForm.get('rePassword')?.touched">
+                                            password is not matched
+                                    </mat-error>
                                 </mat-form-field>
                             </div>
 
-
-                            <button type="submit" class="btn btn-primary">Submit</button>
-
+                            <div>
+                                <button type="submit" mat-raised-button 
+                                        class="float-right"
+                                        color="primary" 
+                                        (click)="onsubmit()"
+                                        [disabled]= "signUpForm.status == 'INVALID'">
+                                        Submit
+                                </button>
+                            </div>
                         </div>
                     </div>
-
-                    <div>
-                        <button mat-raised-button color="primary" matStepperNext>Next</button>
-                    </div>
-                </mat-step>
-                <!-- #endStep 1 personal info  -->
-
-                <!-- startStep 2 address info -->
-                <mat-step label="user address" state="address">
-
-                    <div class="row justify-content-md-center">
-                        <div class="col-xs-12 col-md-6">
-                            
-                                <div>
-                                    <mat-form-field class="full-width" appearance="fill">
-                                        <mat-label>address</mat-label>
-                                        <textarea matInput placeholder=" " value="" formControlName="birthday"></textarea>
-                                    </mat-form-field>
-                                </div>
-            
-                                <div>
-                                    <mat-form-field class="full-width" appearance="fill">
-                                        <mat-label>zip code</mat-label>
-                                        <input matInput type="text" placeholder=" zipe code must be 10 digit" value=""
-                                            formControlName="zipCode">
-                                    </mat-form-field>
-                                </div>
-                            
-                        </div>
-                    </div>
-
-                    <div>
-                        <button class="mat-raised-buttom" mat-raised-button color="primary" matStepperPrevious>Back</button>
-                        <button class="mat-raised-buttom" mat-raised-button color="primary" matStepperNext>Next</button>
-                    </div>
-
-                </mat-step>
-                <!-- #endStep 2 address info  -->
-
-                <!-- startStep 3 password -->
-                <mat-step label="save" state="save">
 
                 </mat-step>
                 <!-- #endStep 3 password  -->
-            </form>
-        </mat-horizontal-stepper>
+           
+        </mat-stepper>
+    </form>
 </div>
 
 
 
 
-{{signUpForm.value|json}}
+<!-- {{signUpForm.controls.userInfo|json}} -->
+<!-- {{signUpForm.controls.userInfo|json}} -->
+<!-- {{signUpForm.get('userInfo.email')|json}} -->
 
-<br>
-<div class="row justify-content-md-center">
-    <div class="col-xs-12 col-md-6 ">
-        <form [formGroup]="signUpForm" (ngSubmit)="onsubmite()" class="form">
-            <div>
-                <mat-form-field class="full-width" appearance="fill">
-                    <mat-label>name</mat-label>
-                    <input matInput type="text" placeholder="Ex. john" value="" formControlName="name">
-                </mat-form-field>
-            </div>
-            <div>
-                <mat-form-field class="full-width" appearance="fill">
-                    <mat-label>last name</mat-label>
-                    <input matInput type="text" placeholder="Ex. Doe" value="" formControlName="lastName">
-                </mat-form-field>
-            </div>
-
-            <div>
-                <mat-form-field class="full-width" appearance="fill">
-                    <mat-label>Enter your email</mat-label>
-                    <input matInput type="email" placeholder="test@example.com" formControlName="email">
-                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
-                </mat-form-field>
-            </div>
-
-            <div>
-                <mat-form-field class="full-width" appearance="fill">
-                    <mat-label>birthday</mat-label>
-                    <input matInput type="date" placeholder=" " value="" formControlName="birthday">
-                </mat-form-field>
-            </div>
-
-            <div>
-                <mat-form-field class="full-width" appearance="fill">
-                    <mat-label>address</mat-label>
-                    <textarea matInput placeholder=" " value="" formControlName="birthday"></textarea>
-                </mat-form-field>
-            </div>
-
-            <div>
-                <mat-form-field class="full-width" appearance="fill">
-                    <mat-label>zip code</mat-label>
-                    <input matInput type="text" placeholder=" zipe code must be 10 digit" value=""
-                        formControlName="zipCode">
-                </mat-form-field>
-            </div>
-
-            <div>
-                <mat-form-field class="full-width" appearance="fill">
-                    <mat-label>password </mat-label>
-                    <input matInput type="password"
-                        placeholder=" password must be minimum 10 digit and must contain at least 1 uppercase  character "
-                        value="" formControlName="password">
-                </mat-form-field>
-            </div>
-
-            <div>
-                <mat-form-field class="full-width" appearance="fill">
-                    <mat-label>re password </mat-label>
-                    <input matInput type="password" placeholder=" please enter password again" value=""
-                        formControlName="rePassword">
-                </mat-form-field>
-            </div>
-
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </div>
-</div>
