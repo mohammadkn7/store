@@ -1,3 +1,184 @@
+<div class="container">
+        <!-- #docregion states -->
+        <mat-horizontal-stepper>
+            <form [formGroup]="signUpForm" (ngSubmit)="onsubmite()" class="form">
+                
+                <!-- #startStep 1 personal info -->                
+                <mat-step label="add Lines" state="personal_info">
+                    <div class="row justify-content-md-center">
+                        <div class="col-xs-12 col-md-6 ">
+
+                            <div>
+                                <mat-form-field class="full-width" appearance="fill">
+                                    <mat-label>name</mat-label>
+                                    <input matInput type="text" placeholder="Ex. john" value="" formControlName="name">
+                                </mat-form-field>
+                            </div>
+                            <div>
+                                <mat-form-field class="full-width" appearance="fill">
+                                    <mat-label>last name</mat-label>
+                                    <input matInput type="text" placeholder="Ex. Doe" value="" formControlName="lastName">
+                                </mat-form-field>
+                            </div>
+
+                            <div>
+                                <mat-form-field class="full-width" appearance="fill">
+                                    <mat-label>Enter your email</mat-label>
+                                    <input matInput type="email" placeholder="test@example.com" formControlName="email">
+                                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                                </mat-form-field>
+                            </div>
+
+                            <div>
+                                <mat-form-field class="full-width" appearance="fill">
+                                    <mat-label>birthday</mat-label>
+                                    <input matInput type="date" placeholder=" " value="" formControlName="birthday">
+                                </mat-form-field>
+                            </div>
 
 
 
+                            <div>
+                                <mat-form-field class="full-width" appearance="fill">
+                                    <mat-label>password </mat-label>
+                                    <input matInput type="password"
+                                        placeholder=" password must be minimum 10 digit and must contain at least 1 uppercase  character "
+                                        value="" formControlName="password">
+                                </mat-form-field>
+                            </div>
+
+                            <div>
+                                <mat-form-field class="full-width" appearance="fill">
+                                    <mat-label>re password </mat-label>
+                                    <input matInput type="password" placeholder=" please enter password again" value=""
+                                        formControlName="rePassword">
+                                </mat-form-field>
+                            </div>
+
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+
+                        </div>
+                    </div>
+
+                    <div>
+                        <button mat-raised-button color="primary" matStepperNext>Next</button>
+                    </div>
+                </mat-step>
+                <!-- #endStep 1 personal info  -->
+
+                <!-- startStep 2 address info -->
+                <mat-step label="user address" state="address">
+
+                    <div class="row justify-content-md-center">
+                        <div class="col-xs-12 col-md-6">
+                            
+                                <div>
+                                    <mat-form-field class="full-width" appearance="fill">
+                                        <mat-label>address</mat-label>
+                                        <textarea matInput placeholder=" " value="" formControlName="birthday"></textarea>
+                                    </mat-form-field>
+                                </div>
+            
+                                <div>
+                                    <mat-form-field class="full-width" appearance="fill">
+                                        <mat-label>zip code</mat-label>
+                                        <input matInput type="text" placeholder=" zipe code must be 10 digit" value=""
+                                            formControlName="zipCode">
+                                    </mat-form-field>
+                                </div>
+                            
+                        </div>
+                    </div>
+
+                    <div>
+                        <button class="mat-raised-buttom" mat-raised-button color="primary" matStepperPrevious>Back</button>
+                        <button class="mat-raised-buttom" mat-raised-button color="primary" matStepperNext>Next</button>
+                    </div>
+
+                </mat-step>
+                <!-- #endStep 2 address info  -->
+
+                <!-- startStep 3 password -->
+                <mat-step label="save" state="save">
+
+                </mat-step>
+                <!-- #endStep 3 password  -->
+            </form>
+        </mat-horizontal-stepper>
+</div>
+
+
+
+
+{{signUpForm.value|json}}
+
+<br>
+<div class="row justify-content-md-center">
+    <div class="col-xs-12 col-md-6 ">
+        <form [formGroup]="signUpForm" (ngSubmit)="onsubmite()" class="form">
+            <div>
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>name</mat-label>
+                    <input matInput type="text" placeholder="Ex. john" value="" formControlName="name">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>last name</mat-label>
+                    <input matInput type="text" placeholder="Ex. Doe" value="" formControlName="lastName">
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>Enter your email</mat-label>
+                    <input matInput type="email" placeholder="test@example.com" formControlName="email">
+                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>birthday</mat-label>
+                    <input matInput type="date" placeholder=" " value="" formControlName="birthday">
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>address</mat-label>
+                    <textarea matInput placeholder=" " value="" formControlName="birthday"></textarea>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>zip code</mat-label>
+                    <input matInput type="text" placeholder=" zipe code must be 10 digit" value=""
+                        formControlName="zipCode">
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>password </mat-label>
+                    <input matInput type="password"
+                        placeholder=" password must be minimum 10 digit and must contain at least 1 uppercase  character "
+                        value="" formControlName="password">
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>re password </mat-label>
+                    <input matInput type="password" placeholder=" please enter password again" value=""
+                        formControlName="rePassword">
+                </mat-form-field>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
