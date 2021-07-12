@@ -12,6 +12,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { ProductsComponent } from './products/products.component';
 import { CommaSepratorPipe } from './shared/pipe/comma-seprator.pipe';
+import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CommaSepratorPipe } from './shared/pipe/comma-seprator.pipe';
     HeaderComponent,
     UserRegisterComponent,
     ProductsComponent,
-    CommaSepratorPipe
+    CommaSepratorPipe,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
