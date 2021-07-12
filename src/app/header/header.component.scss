@@ -1,0 +1,77 @@
+
+@import '../shared/style/color.scss';
+
+$bgGradiant : $bgGradiant1;
+$shwGradiant: $shwGradiant1;
+
+nav {
+  z-index: 2;
+  position: relative;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  padding: 13px;
+}
+li.right {
+  float: right;
+}
+li.right, li.left {
+  margin:0 3px;
+  font-size:15px;
+}
+
+li.left span {
+  display:block;
+  color: black;
+  text-align: center;
+  padding: 10px 14px;
+  text-decoration: none;
+  position: relative;
+  min-width: 40px;
+  cursor: pointer;
+  float: left;
+}
+
+.active {
+  color:white !important;
+  border-radius: 36px;
+  background: $bgGradiant;
+}
+
+.active::after, li.left span.aNavbar:hover:not(.active)::after {
+  content: ' ';
+  position: absolute;
+  bottom: -10px;
+  left: calc(50% - 10px);
+  width: 20px;  
+  height: 3px;
+  background: $bgGradiant;
+}
+
+li.left span>img {
+    margin:-10px 10px 0px 20px;
+}
+
+// ====== right side =====
+li.right span{
+  float:right;
+  padding: 10px 8px;
+  display: block;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  position: relative;
+  cursor: pointer;
+}
+.login::after {
+  content: '';
+  position: absolute;
+  right:-2px;
+}
+li.right a>i {
+  font-size: 18px;
+}

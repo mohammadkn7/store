@@ -1,17 +1,40 @@
-<nav class="navbar navbar-default">
-    
-        <div class="navbar-header">
-            <ul class="nav nav-tabs" id="navId">
-                <li class="nav-item">
-                    <a  class="navbar-brand" routerLink="/home">bugloos store</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " [routerLink]="['sign-up']" routerLinkActive="active">sign-up</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " [routerLink]="['product']" routerLinkActive="active">product</a>
-                </li>
-            </ul>
-        </div>
-   
-</nav>
+<nav >
+    <ul>
+      <li class="left"><span >
+        <img src="../../assets/images/m-logo.png" height="43"  alt="">
+      </span></li>
+      <li class="left">
+        <span  class="aNavbar" id="0" routerLink="/home"
+            routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"            
+            >
+            home
+      </span>
+      </li>
+      <li class="left" *ngIf="isLogged">
+        <span class="aNavbar " [routerLink]="['product']" routerLinkActive="active">products</span>
+      </li>         
+      <li class="left">
+        <span class="aNavbar " [routerLink]="['sign-up']" routerLinkActive="active">sign-up</span>
+      </li>         
+      
+      <li class="right" *ngIf="isLogged">
+          <span  (click)="onLogout()">
+            <mat-icon>logout</mat-icon>            
+        </span>
+      </li>
+      <li class="right" *ngIf="!isLogged">
+            <span routerLink="/login" class="login"  (click)="onLogin()">
+                <mat-icon>
+                    login
+                </mat-icon>
+            </span>
+      </li>
+
+      <li class="right" *ngIf="isLogged"><span><mat-icon>shopping_cart</mat-icon></span></li>
+      <li class="right" *ngIf="isLogged"><span ><mat-icon>person</mat-icon></span></li>
+
+      
+
+ 
+    </ul>
+  </nav>

@@ -24,7 +24,7 @@ export class ProductService {
   ];
   p : any = mockProduct;
   constructor() {     
-    this.products = this.p;
+    // this.products = this.p;
     
   }
 
