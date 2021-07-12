@@ -1,26 +1,42 @@
 <div class="container">
+
+    <div class="row main light ">
+        
+
+            <div class="col-md-6">
+                <div class=" h-100">
+                    <div class="d-flex justify-content-center h-100">
+                        <div class="searchbar">
+                            <a class="search_icon">
+                                <mat-icon>search</mat-icon>
+                            </a>
+                            <input class="search_input" type="text" name="" placeholder="search ..."
+                                [(ngModel)]="searchWord">
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6"></div>
+
+        
+    </div>
+
     <div class="row col-md-12">
-        <div class="col-md-4 div_card" *ngFor="let product of products">
+        <div class="col-md-4 div_card" *ngFor="let product of products | fuzzySearch : searchWord">
             <mat-card class="card">
                 <mat-card-header>
                     <div mat-card-avatar class="example-header-image"></div>
-                    <mat-card-title [routerLink]= "['/product',product.id]">{{product.name}}</mat-card-title>
-                    <!-- <mat-card-subtitle>{{product.price}}</mat-card-subtitle> -->
+                    <mat-card-title [routerLink]="['/product',product.id]">{{product.name}}</mat-card-title>                   
                 </mat-card-header>
-                <img mat-card-image class="img-card"
-                     src="{{product.imgPath}}" 
-                     alt="{{product.name}}"
-                     [routerLink]= "['/product',product.id]">
+                <img mat-card-image class="img-card" src="{{product.imgPath}}" alt="{{product.name}}"
+                    [routerLink]="['/product',product.id]">
                 <mat-card-content>
-                    <!-- <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Corrupti blanditiis veniam delectus et asperiores ipsum natus minima! Ut neque aliquam,
-                        tempore, assumenda quasi repudiandae, eveniet ullam dolor animi ratione sit.
-                    </p> -->
+ 
                 </mat-card-content>
                 <mat-card-actions>
                     <button class="btn-card" mat-button>
-                        
+
                         {{product.price|commaSeprator}}
                         <mat-icon>shopping_cart</mat-icon>
                     </button>

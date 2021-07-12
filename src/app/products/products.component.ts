@@ -13,6 +13,7 @@ export class ProductsComponent implements OnInit {
   constructor(private productService: ProductService ) { }
 
   products!: Product[];
+  searchWord:any;
 
   ngOnInit(): void {
 
