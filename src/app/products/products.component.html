@@ -1,7 +1,16 @@
 <div class="container">
 
     <div class="row main light ">
-        
+
+            <div class="col-md-6">
+                <label class="sort">
+                    <span>
+                        sort price :
+                    </span>
+                    <a [ngClass]="{'active': sort == 'desc'}" (click)="sortPrice('desc')"> high to low</a>
+                    <a [ngClass]="{'active': sort == 'asc'}"  (click)="sortPrice('asc')"> low to high</a>
+                </label>
+            </div>
 
             <div class="col-md-6">
                 <div class=" h-100">
@@ -17,13 +26,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6"></div>
 
         
     </div>
 
     <div class="row col-md-12">
-        <div class="col-md-4 div_card" *ngFor="let product of products | fuzzySearch : searchWord">
+        <div class="col-md-4 div_card" *ngFor="let product of products | fuzzySearch : searchWord | sort:'price':sort">
             <mat-card class="card">
                 <mat-card-header>
                     <div mat-card-avatar class="example-header-image"></div>
@@ -37,7 +45,7 @@
                 <mat-card-actions>
                     <button class="btn-card" mat-button>
 
-                        {{product.price|commaSeprator}}
+                        {{product.price|currency }}
                         <mat-icon>shopping_cart</mat-icon>
                     </button>
                 </mat-card-actions>

@@ -14,6 +14,8 @@ export class ProductsComponent implements OnInit {
 
   products!: Product[];
   searchWord:any;
+  sort = '';
+  isAsc= false;
 
   ngOnInit(): void {
 
@@ -23,6 +25,15 @@ export class ProductsComponent implements OnInit {
   getProducts() {
     this.products = this.productService.getProducts();
     console.log(this.getProducts);
+  }
+
+  sortPrice(sortType:string) {
+    this.isAsc = !this.isAsc;   
+    if (this.isAsc) this.sort = 'asc' ;
+    else this.sort = 'desc';
+
+    this.sort = sortType;
+    
   }
 
 }

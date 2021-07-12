@@ -16,6 +16,48 @@ div.row.main.light {
                 -9px -9px 12px #ffffff;
 }
 
+label.sort {
+    margin:0;
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);  
+
+    a {
+        display: inline-block;
+        margin: 0 10px;
+        color: black;
+        text-align: center;
+        padding: 8px 14px;
+        text-decoration: none;
+        position: relative;
+        min-width: 80px;
+        cursor: pointer;
+        border-radius: 5px;
+        background: #f0f0f3;
+        box-shadow:  5px 5px 10px #dadadd,
+                     -5px -5px 10px #ffffff;
+        
+    }
+    a.active {
+        border-radius: 5px;
+        background: #f0f0f3;
+        box-shadow: inset 5px 5px 7px #d3d3d6,
+                    inset -5px -5px 7px #ffffff;
+    }
+
+
+    button {
+        margin: 0 10px;
+        border-radius: 5px;
+        background: #f0f0f3;
+        box-shadow:  5px 5px 10px #dadadd,
+                     -5px -5px 10px #ffffff;
+    }
+}
+
+
+// ===============
+
 .div_card {
     margin: 0;
     padding: 15px;
