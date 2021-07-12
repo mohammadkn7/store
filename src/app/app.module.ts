@@ -15,6 +15,7 @@ import { CommaSepratorPipe } from './shared/pipe/comma-seprator.pipe';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { FuzzySearchPipe } from './shared/pipe/fuzzy-search.pipe';
 import { SortPipe } from './shared/pipe/sort.pipe';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SortPipe } from './shared/pipe/sort.pipe';
     CommaSepratorPipe,
     ProductDetailComponent,
     FuzzySearchPipe,
-    SortPipe
+    SortPipe,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
