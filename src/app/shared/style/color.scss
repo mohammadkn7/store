@@ -1,0 +1,19 @@
+
+$orang : rgba(255,130,62,1);
+$orangLight : rgba(254,107,117,1);
+$pink : rgba(253,83,174,1);
+$pinkDark :#bf4786;
+
+
+$pink2 : #cc2b5e ;
+$violet : #753a88;
+
+$violetDark :#602872;
+
+
+$bgGradiant1 : linear-gradient(90deg, $orang 0%, $orangLight 52%, $pink 100%);
+$shwGradiant1: inset 2px 2px 10px $pinkDark,inset -3px -3px 13px #fff;
+
+
+$bgGradiant2 : linear-gradient(90deg, $pink2 0%, $violet 100%);
+$shwGradiant2: inset 2px 2px 10px $violetDark,inset -3px -3px 13px #fff;
