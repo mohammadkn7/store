@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { ProductsComponent } from './products/products.component';
+import { CommaSepratorPipe } from './shared/pipe/comma-seprator.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ProductsComponent } from './products/products.component';
     ErrorComponent,
     HeaderComponent,
     UserRegisterComponent,
-    ProductsComponent
+    ProductsComponent,
+    CommaSepratorPipe
   ],
   imports: [
     BrowserModule,
