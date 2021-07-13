@@ -25,7 +25,7 @@ import {
                 
      canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
                   
-                     this.authService.isLogged
+                     this.authService.user
                       .subscribe(
                           d => {
                             this.loggedIn = d;

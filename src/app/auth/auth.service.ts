@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { catchError, tap } from 'rxjs/operators';
+import { User } from './user.model';
 
 export interface AuthResponseData {
   kind: string;
@@ -21,7 +22,7 @@ export interface AuthResponseData {
 export class AuthService {
   
 
-  public isLogged =new BehaviorSubject<any>(true) ;
+  public user =new BehaviorSubject<any>(true) ;
 
 
 
@@ -51,7 +52,9 @@ export class AuthService {
   }
 
   logOut() {
-    return this.isLogged.next(false);
+     this.user.next(false);
+     this.router.navigate(['/login']);
+     localStorage.removeItem('userData');
   }
 
 
@@ -85,11 +88,11 @@ export class AuthService {
     token: string,
     expiresIn: number
   ) {
-    // const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
-    // const user = new User(email, userId, token, expirationDate);
-    // this.user.next(user);
-    // this.autoLogout(expiresIn * 1000);
-    // localStorage.setItem('userData', JSON.stringify(user));
+    const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
+    const user = new User(email, userId, token, expirationDate);
+    this.user.next(user);
+    
+    localStorage.setItem('userData', JSON.stringify(user));
   }
 
   private handleError(errorRes: HttpErrorResponse) {

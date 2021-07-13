@@ -19,6 +19,8 @@ import { AuthComponent } from './auth/auth.component';
 
 import { SwiperModule } from 'swiper/angular';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 
 
@@ -35,7 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
     ProductDetailComponent,
     FuzzySearchPipe,
     SortPipe,
-    AuthComponent
+    AuthComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

@@ -10,31 +10,29 @@
             home
       </span>
       </li>
-      <li class="left" *ngIf="isLogged">
+      <li class="left" >
         <span class="aNavbar " [routerLink]="['product']" routerLinkActive="active">products</span>
       </li>         
       <li class="left">
         <span class="aNavbar " [routerLink]="['sign-up']" routerLinkActive="active">sign-up</span>
       </li>         
+      <li class="left">
+        <span class="aNavbar " [routerLink]="['dashboard']" routerLinkActive="active">dashboard</span>
+      </li>         
       
-      <li class="right" *ngIf="isLogged">
-          <span  (click)="onLogout()">
-            <mat-icon>logout</mat-icon>            
+      <li class="right" *ngIf="isLogged" >
+          <span  (click)="onLogout()" routerLink="/home">
+            logout
+            <mat-icon class="mat-icon">logout</mat-icon>      
         </span>
       </li>
       <li class="right" *ngIf="!isLogged">
-            <span routerLink="/login" class="login"  (click)="onLogin()">
-                <mat-icon>
-                    login
-                </mat-icon>
+            <span routerLink="/login" class="login" >
+              login
+              <mat-icon class="mat-icon">login</mat-icon>  
             </span>
       </li>
-
       <li class="right" *ngIf="isLogged"><span><mat-icon>shopping_cart</mat-icon></span></li>
-      <li class="right" *ngIf="isLogged"><span ><mat-icon>person</mat-icon></span></li>
-
-      
-
  
     </ul>
   </nav>

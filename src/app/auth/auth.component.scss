@@ -1,0 +1,22 @@
+
+div.main {
+    border-radius: 41px;
+    background: #f0f0f3;
+    box-shadow:  15px 15px 30px #cccccf,
+                 -15px -15px 30px #ffffff;
+    padding: 30px;
+
+    .stepper {
+        border-radius: 30px;
+    }
+}
+.form {
+    
+    button {
+        float:right;
+    }
+}
+.full-width {
+    width: 100%;
+    margin:5px 0;
+}
