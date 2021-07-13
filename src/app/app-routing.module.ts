@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'sign-up', component: UserRegisterComponent },
   { path: 'login', component: AuthComponent },
   { path: 'product', component: ProductsComponent, canActivate: [AuthGuard], },
-  { path: 'product/:id', component: ProductDetailComponent },
+  { path: 'product/:id', component: ProductDetailComponent, canActivate: [AuthGuard]},
   { path: 'not-found', component: ErrorComponent, data: {message: 'Page not found!'} },
   { path: '**', redirectTo: '/not-found' }
 ];

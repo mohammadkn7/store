@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,6 +16,11 @@ import { ProductDetailComponent } from './products/product-detail/product-detail
 import { FuzzySearchPipe } from './shared/pipe/fuzzy-search.pipe';
 import { SortPipe } from './shared/pipe/sort.pipe';
 import { AuthComponent } from './auth/auth.component';
+
+import { SwiperModule } from 'swiper/angular';
+
+
+
 
 @NgModule({
   declarations: [
@@ -37,9 +42,15 @@ import { AuthComponent } from './auth/auth.component';
     ReactiveFormsModule,
     NoopAnimationsModule,
     AngularMaterialModule,
-    FormsModule
+    FormsModule,
+    SwiperModule
   ],
+
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+    NO_ERRORS_SCHEMA
+  ],
 })
 export class AppModule { }
