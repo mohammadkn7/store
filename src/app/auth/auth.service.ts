@@ -113,4 +113,12 @@ export class AuthService {
     }
     return throwError(errorMessage);
   }
+
+  postUser(user : {name: string, lastName: string, email: string, birthDAY: Date, address: string, zipCode: string, password: string}) {
+   return    this.http
+   .post(
+     'https://buglus-test-store-default-rtdb.firebaseio.com/posts.json',
+     user
+   )
+  }
 }

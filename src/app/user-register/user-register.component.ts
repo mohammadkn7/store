@@ -1,6 +1,8 @@
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 import { ValidatorsService } from './validators.service';
 
 @Component({
@@ -15,7 +17,9 @@ export class UserRegisterComponent implements OnInit {
 
   signUpForm!: FormGroup;
 
-  constructor(private validatorService: ValidatorsService) { }
+  constructor(private validatorService: ValidatorsService,
+              private authServie: AuthService,
+              private router: Router) { }
 
   ngOnInit() {
     this.signUpForm = new FormGroup({     
@@ -36,13 +40,26 @@ export class UserRegisterComponent implements OnInit {
   }
 
   onsubmit() {
-    console.log(2332);
-    // console.log(this.signUpForm.controls.password.status);
-   
-      // console.log(this.signUpForm.controls.userInfo.email.touched);
-      console.log(this.signUpForm.get('userInfo.email'));
-    
-    // console.log(this.signUpForm.controls.adressInfo.status);
-    
+    if(this.signUpForm.status == "INVALID") return
+
+    this.authServie.postUser({
+        name:this.signUpForm.value.userInfo.name,
+        lastName:this.signUpForm.value.userInfo.lastName,
+        email: this.signUpForm.value.userInfo.email,
+        birthDAY: this.signUpForm.value.userInfo.birthday,
+        address: this.signUpForm.value.addressInfo.address,
+        zipCode: this.signUpForm.value.addressInfo.address,
+        password: this.signUpForm.value.password
+      }).subscribe(
+        d => {
+          // console.log(d);
+          this.signUpForm.reset();
+          this.router.navigate(['/home']);
+        },
+        e => {
+          console.log(e);
+        }
+      )
+      
   }
 }
