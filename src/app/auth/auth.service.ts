@@ -27,8 +27,27 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  login() {    
-    return this.isLogged.next(true);
+  login(email: string, password: string) {        
+      return this.http
+        .post<AuthResponseData>(
+          'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyAtDtoIdOEi_JMb56T4zYr1CeHpN9jFolA',
+          {
+            email: email,
+            password: password,
+            returnSecureToken: true
+          }
+        )
+        .pipe(
+          catchError(this.handleError),
+          tap(resData => {
+            this.handleAuthentication(
+              resData.email,
+              resData.localId,
+              resData.idToken,
+              +resData.expiresIn
+            );
+          })
+        );    
   }
 
   logOut() {
@@ -43,6 +62,7 @@ export class AuthService {
         {
           email: email,
           password: password,
+          address: 'testAddress',
           returnSecureToken: true
         }
       )

@@ -18,6 +18,7 @@ import { SortPipe } from './shared/pipe/sort.pipe';
 import { AuthComponent } from './auth/auth.component';
 
 import { SwiperModule } from 'swiper/angular';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -42,6 +43,7 @@ import { SwiperModule } from 'swiper/angular';
     ReactiveFormsModule,
     NoopAnimationsModule,
     AngularMaterialModule,
+    HttpClientModule,
     FormsModule,
     SwiperModule
   ],

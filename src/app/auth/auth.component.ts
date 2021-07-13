@@ -12,7 +12,7 @@ export class AuthComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.authService.signup("mohammad@test.com","123456789")
+    this.authService.signup("mohammad@test2.com","123456789")
     .subscribe(d => {
       console.log(d);
     }, error => {
