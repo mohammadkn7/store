@@ -9,3 +9,19 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #f0f0f3; }
+
+.mat-stepper-horizontal, .mat-stepper-vertical {
+    background-color: #f0f0f3 !important;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    padding:0px;
+    border-radius: 5px;
+    background: #f0f0f3;
+    box-shadow: inset 5px 5px 4px #c5c5c7,
+                inset -5px -5px 4px #ffffff;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-underline::before {
+    background-color: #ffffff;
+}

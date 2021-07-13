@@ -1,10 +1,9 @@
-<div class="container">
+<div class="container main">
     <form [formGroup]="signUpForm"  class="form">  
         <!-- #docregion states -->
-        <mat-stepper #stepper labelPosition="bottom">
-                         
+        <mat-stepper  #stepper labelPosition="bottom">                         
                 <!-- #startStep 1 personal info -->                
-                <mat-step label="personal info" #stepper>
+                <mat-step label="personal info" #stepper color="accent">
                     <div class="row justify-content-md-center" formGroupName="userInfo">
                         <div class="col-xs-12 col-md-6 ">
 
@@ -69,7 +68,7 @@
                 <!-- #endStep 1 personal info  -->
 
                 <!-- startStep 2 address info -->
-                <mat-step label="user address" >
+                <mat-step label="user address" color="accent" >
                     <div class="row justify-content-md-center" formGroupName="addressInfo">
                         <div class="col-xs-12 col-md-6">                            
                                 <div>
@@ -88,6 +87,7 @@
                                         <input matInput type="text" 
                                                placeholder=" zipe code must be 10 digit"                                         
                                                formControlName="zipCode" required>
+                                               
                                         <mat-error *ngIf="signUpForm.get('addressInfo.zipCode')?.status == 'INVALID' && signUpForm.get('addressInfo.zipCode')?.touched">
                                                 zip code must be 10 digit                                    
                                         </mat-error>
@@ -108,7 +108,7 @@
                 <!-- #endStep 2 address info  -->
 
                 <!-- startStep 3 password --> 
-                <mat-step label="password" >
+                <mat-step label="password" color="accent" >
                     <div class="row justify-content-md-center" >
                         <div class="col-xs-12 col-md-6">
                             <div>
@@ -153,10 +153,4 @@
     </form>
 </div>
 
-
-
-
-<!-- {{signUpForm.controls.userInfo|json}} -->
-<!-- {{signUpForm.controls.userInfo|json}} -->
-<!-- {{signUpForm.get('userInfo.email')|json}} -->
 
