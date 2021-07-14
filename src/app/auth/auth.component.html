@@ -9,11 +9,14 @@
                         <mat-label>email </mat-label>
                         <input matInput type="email"
                             placeholder=" email "
-                            value="" formControlName="email">
+                            value="" formControlName="email"> 
+                            <mat-hint> plaese use mohammad@test.com for login</mat-hint>
+                            <mat-error *ngIf="form.get('email')?.status == 'INVALID' && form.get('email')?.touched">
+                                please enter a corect email
+                            </mat-error>
                     </mat-form-field>
-                    <mat-error *ngIf="form.get('email')?.status == 'INVALID' && form.get('email')?.touched">
-                    please enter a corect password
-                    </mat-error>
+                    
+
                 </div>
 
                 <div>
@@ -21,6 +24,8 @@
                         <mat-label>password </mat-label>
                         <input matInput type="password" placeholder=" password" value=""
                             formControlName="password">
+                    <mat-hint> plaese use 123456789 for login</mat-hint>
+
                         <mat-error *ngIf="form.get('password')?.status == 'INVALID' && form.get('password')?.touched">
                                 password is requierd
                         </mat-error>
