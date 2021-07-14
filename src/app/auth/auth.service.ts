@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { User } from './user.model';
 
 export interface AuthResponseData {
@@ -20,11 +20,8 @@ export interface AuthResponseData {
   providedIn: 'root'
 })
 export class AuthService {
-  
 
-  public user =new BehaviorSubject<any>(true) ;
-
-
+  public user =new BehaviorSubject<any>(false) ;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -115,10 +112,28 @@ export class AuthService {
   }
 
   postUser(user : {name: string, lastName: string, email: string, birthDAY: Date, address: string, zipCode: string, password: string}) {
-   return    this.http
-   .post(
+   return    this.http.post(
      'https://buglus-test-store-default-rtdb.firebaseio.com/posts.json',
      user
    )
+  }
+  getUser() {
+    return this.http.get<{ [key: string]: any }>(
+      'https://buglus-test-store-default-rtdb.firebaseio.com/posts.json'      
+    ).pipe(
+      map((responseData): any[] => {
+        
+        const postsArray: any[] = [];
+        for (const key in responseData) {          
+          if (responseData.hasOwnProperty(key)) {
+            postsArray.push({...responseData[key], id: key });
+          }
+        }
+        return postsArray;
+      }),
+      catchError(errorRes => {        
+        return throwError(errorRes);
+      })
+    );
   }
 }

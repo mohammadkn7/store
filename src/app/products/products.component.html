@@ -7,8 +7,8 @@
                     <span>
                         sort price :
                     </span>
-                    <a [ngClass]="{'active': sort == 'desc'}" (click)="sortPrice('desc')"> high to low</a>
-                    <a [ngClass]="{'active': sort == 'asc'}"  (click)="sortPrice('asc')"> low to high</a>
+                    <a [ngClass]="{'active': sort == 'desc'}" (click)="sortPrice('desc')"> low to high </a>
+                    <a [ngClass]="{'active': sort == 'asc'}"  (click)="sortPrice('asc')"> high to low</a>
                 </label>
             </div>
 
@@ -37,13 +37,13 @@
                     <div mat-card-avatar class="example-header-image"></div>
                     <mat-card-title [routerLink]="['/product',product.id]">{{product.name}}</mat-card-title>                   
                 </mat-card-header>
-                <img mat-card-image class="img-card" src="https://picsum1.photos/1000/1000?random={{i}}" alt="{{product.name}}"
+                <img mat-card-image class="img-card" src="{{product.imgPath}}" alt="{{product.name}}"
                     [routerLink]="['/product',product.id]">
                 <mat-card-content>
  
                 </mat-card-content>
                 <mat-card-actions>
-                    <button class="btn-card" mat-button (click)="onAddtoCart()">
+                    <button class="btn-card" mat-button (click)="onAddtoCart(product)">
 
                         {{product.price | currency}}
                         <mat-icon>shopping_cart</mat-icon>

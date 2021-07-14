@@ -16,7 +16,7 @@
       <li class="left">
         <span class="aNavbar " [routerLink]="['sign-up']" routerLinkActive="active">sign-up</span>
       </li>         
-      <li class="left">
+      <li class="left" *ngIf="isLogged">
         <span class="aNavbar " [routerLink]="['dashboard']" routerLinkActive="active">dashboard</span>
       </li>         
       
@@ -32,7 +32,11 @@
               <mat-icon class="mat-icon">login</mat-icon>  
             </span>
       </li>
-      <li class="right" *ngIf="isLogged"><span><mat-icon>shopping_cart</mat-icon></span></li>
+      <li class="right" *ngIf="isLogged" >
+        <span [routerLink]="['bascket']">
+              <mat-icon matBadge="{{basket.length}}" matBadgeColor="accent">shopping_cart</mat-icon>
+        </span>              
+      </li>
  
     </ul>
   </nav>

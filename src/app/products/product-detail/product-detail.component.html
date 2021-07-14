@@ -1,32 +1,89 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <div>
-                <mat-card class="card">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title >{{product.name}}</mat-card-title>
-                    </mat-card-header>
-                    <img mat-card-image class="img-card"
-                         src="{{product.imgPath}}" 
-                         alt="{{product.name}}"
-                         >
-                    <mat-card-content>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Corrupti blanditiis veniam delectus et asperiores ipsum natus minima! Ut neque aliquam,
-                            tempore, assumenda quasi repudiandae, eveniet ullam dolor animi ratione sit.
-                        </p>
-                    </mat-card-content>
-                    <mat-card-actions>
-                        <button class="btn-card" mat-button>
-                            
-                            {{product.price|commaSeprator}}
-                            <mat-icon>shopping_cart</mat-icon>
-                        </button>
-                    </mat-card-actions>
-                </mat-card>
+        <div class="col-md-6 ">
+            <div class="product-container">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title >{{product.name}}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <hr>
+
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Corrupti blanditiis veniam delectus et asperiores ipsum natus minima! Ut neque aliquam,
+                        tempore, assumenda quasi repudiandae, eveniet ullam dolor animi ratione sit.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Corrupti blanditiis veniam delectus et asperiores ipsum natus minima! Ut neque aliquam,
+                        tempore, assumenda quasi repudiandae, eveniet ullam dolor animi ratione sit.
+                    </p>
+
+                    <hr>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button class="btn-card" mat-button (click)="onAddtoCart(product)">
+                        
+                        {{product.price|commaSeprator}}
+                        <mat-icon>shopping_cart</mat-icon>
+                    </button>
+                </mat-card-actions>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="img-container">
+                <img mat-card-image class="img-card"
+                src="{{product.imgPath}}" 
+                alt="{{product.name}}"
+                >
             </div>
         </div>
     </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+
+                <div class="product">
+                    <h2>
+                        Products related to this item
+                    </h2>
+    
+                    <swiper
+                    [navigation]="true"
+                    [slidesPerView]="4"
+                    [spaceBetween]="30"
+                    [slidesPerGroup]="1"
+                    [centeredSlides]="false"
+            
+                    class="mySwiper"
+                  >
+                    <ng-template *ngFor="let product of products;let i = index" swiperSlide>
+                        <mat-card class="card">
+                            <mat-card-header>
+                                <div mat-card-avatar class="example-header-image"></div>
+                                <mat-card-title [routerLink]="['/product',product.id]">{{product.name}}</mat-card-title>                   
+                            </mat-card-header>
+                            <img mat-card-image class="img-card" src="https://picsum.photos/200/100?random={{i}}" alt="{{product.name}}"
+                                [routerLink]="['/product',product.id]">
+                            <mat-card-content>
+                
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <button class="btn-card" mat-button>
+                
+                                    {{product.price | currency}}
+                                    <mat-icon>shopping_cart</mat-icon>
+                                </button>
+                            </mat-card-actions>
+                        </mat-card>
+                    </ng-template>
+                
+                  </swiper>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </div>
+

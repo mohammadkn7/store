@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
+import { Product } from '../products/product.model';
+import { ShoppingCartService } from '../shared/services/shopping-cart.service';
 
 @Component({
   selector: 'app-header',
@@ -8,14 +10,22 @@ import { AuthService } from '../auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+              private shoppingCartService: ShoppingCartService ) { }
 
   isLogged !: boolean;
+  basket!: Product[];
   ngOnInit(): void {
     this.authService.user
       .subscribe( d => {
         this.isLogged = d;
-      })
+      });
+    
+    this.shoppingCartService.bascket.subscribe(
+      p => {
+        this.basket = p;
+      }
+    )
   }
 
 

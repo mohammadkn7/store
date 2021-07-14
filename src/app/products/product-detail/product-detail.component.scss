@@ -1,3 +1,97 @@
+@import '../../shared/style/color.scss';
+$bgGradiant : $bgGradiant1;
+$shwGradiant: $shwGradiant1;
+.col-md-6 {
 
+    padding: 20px;
 
+    .product-container, .img-container {
+        padding: 20px;
+        border-radius: 20px;
+        background: #f0f0f3;
+        box-shadow:  7px 7px 14px #dadadd,
+                     -7px -7px 14px #ffffff;
+    }
 
+    .btn-card {
+        background: $bgGradiant;
+        color:white;
+        width:90%;
+        position: relative;
+        left:5%;
+        margin-bottom: 16px !important;
+        padding: 5px;
+        border-radius: 10px;
+    }
+
+}
+
+.img-container  {
+    max-width: 300px;
+    margin: auto;
+    // overflow: hidden;
+    transition: all 1s;
+    img {
+        max-width: 100%;
+    }
+}
+
+.img-container:hover {
+    transform: scale(1.5);
+}
+
+.product {
+    padding: 25px 25px;
+
+    h2 {
+        color: #696868;
+    }
+  
+    .mySwiper  {
+      padding: 55px 15px;
+    }
+  
+    .swiper-pagination {
+      bottom: -10px;
+    }
+  
+ 
+    .swiper-button-prev {
+      left:-10px;
+        
+    }
+
+    .div_card {
+        margin: 0;
+        padding: 15px;
+    }
+    .card {
+        
+        border-radius: 5px;
+        background: #f0f0f3;
+        box-shadow:  7px 7px 14px #dadadd,
+                     -7px -7px 14px #ffffff;
+        border-width: 0px;
+        color: #696868;
+      }
+    .img-card {
+        width: 90%;
+        left:5%;
+        position: relative;
+        margin:0;
+        border-radius: 10px;
+    }
+    
+    
+    .btn-card {
+        background: $bgGradiant;
+        color:white;
+        width:90%;
+        position: relative;
+        left:5%;
+        margin-bottom: 16px !important;
+        padding: 5px;
+        border-radius: 10px;
+    }
+    
+}

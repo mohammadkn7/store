@@ -1,0 +1,38 @@
+
+<div class="container">
+    <div class="row" *ngFor="let product of products">
+        <div class="col-md-6 ">
+            <div class="product-container">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title >{{product.name}}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <hr>
+
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Corrupti blanditiis veniam delectus et asperiores ipsum natus minima! Ut neque aliquam ...
+
+
+                    <hr>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button class="btn-card" mat-button >
+                        
+                        {{product.price|commaSeprator}}
+                        
+                    </button>
+                </mat-card-actions>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="img-container">
+                <img mat-card-image class="img-card"
+                src="{{product.imgPath}}" 
+                alt="{{product.name}}"
+                >
+            </div>
+        </div>
+    </div>
+</div>

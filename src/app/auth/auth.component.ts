@@ -22,13 +22,6 @@ export class AuthComponent implements OnInit {
       'email': new FormControl(null, [Validators.required, Validators.email]),
       'password': new FormControl(null, Validators.required)
     });
-
-    // this.authService.signup("mohammad@test2.com","123456789")
-    // .subscribe(d => {
-    //   console.log(d);
-    // }, error => {
-    //   console.log(error);
-    // })
   }
 
   onsubmit() {
